@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const phone = '+971556710085';
+const whatsapp = '971556710085';
+
+const services = [
+  { title: 'Electrical Fault Finding', text: 'Find and fix power loss, tripping breakers and short circuits.' },
+  { title: 'Sockets & Switches', text: 'Install, repair or replace sockets, switches and dimmers.' },
+  { title: 'Lighting Installation', text: 'LED lights, chandeliers, spotlights and outdoor lighting.' },
+  { title: 'DB Panel & MCB', text: 'Distribution board repair, upgrade and circuit breaker replacement.' },
+  { title: 'Wiring & Rewiring', text: 'New wiring, extra points and safe rewiring for old homes.' },
+  { title: 'Fan & Appliance Fitting', text: 'Ceiling fans, exhaust fans, water heater and appliance connections.' },
+  { title: 'Doorbell & Intercom', text: 'Install and repair doorbells, intercoms and basic CCTV power.' },
+  { title: 'Emergency Electrician', text: 'Urgent electrical help when you cannot wait.' },
+];
+
+const faqs = [
+  {
+    q: 'Do you provide emergency electricians in Dubai?',
+    a: 'Yes. Call or WhatsApp us and we will send an electrician as soon as possible.',
+  },
+  {
+    q: 'How much does an electrician cost in Dubai?',
+    a: 'The price depends on the job. We give you a free quote before we start work.',
+  },
+  {
+    q: 'Why does my electricity keep tripping?',
+    a: 'It can be an overload, a faulty appliance or a wiring problem. Our electrician will test and find the cause.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Electrician in Dubai | Wiring, Lighting & Repairs | SM Home Repair"
+  description="Professional electrician in Dubai. Fault finding, sockets, lighting, DB panels and wiring. Same-day service and free quote."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-20 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h1 class="text-4xl font-extrabold md:text-5xl">
+        Electrician in <span class="text-amber-400">Dubai</span>
+      </h1>
+      <p class="mt-4 text-lg text-slate-300">
+        Safe, fast electrical repairs and installations, with a free quote.
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href={`tel:${phone}`}
+          class="rounded-lg bg-amber-400 px-7 py-3 font-bold text-slate-900 hover:bg-amber-300"
+        >
+          Call Now
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp}?text=Hello%2C%20I%20need%20an%20electrician`}
+          target="_blank"
+          rel="noopener"
+          class="rounded-lg bg-green-500 px-7 py-3 font-bold text-white hover:bg-green-600"
+        >
+          WhatsApp an Electrician
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-center text-3xl font-extrabold">Our Electrical Services</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {services.map((s) => (
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-slate-900">{s.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="text-center text-3xl font-extrabold">Why Call SM Home Repair for Electrical Work</h2>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+        <li class="rounded-2xl bg-slate-50 p-5">Same-day service across Dubai</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Experienced, professional electricians</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Free quote before work starts</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Safe, guaranteed work</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <h2 class="text-center text-3xl font-extrabold">Electrical FAQ</h2>
+    <div class="mt-8 space-y-4">
+      {faqs.map((f) => (
+        <details class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <summary class="cursor-pointer font-semibold">{f.q}</summary>
+          <p class="mt-2 text-slate-600">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-900 py-14 text-center text-white">
+    <h2 class="text-3xl font-extrabold">Electrical Problem? We Can Help Today.</h2>
+    <p class="mt-2 text-slate-300">Call or WhatsApp us for a free quote.</p>
+    <a
+      href={`tel:${phone}`}
+      class="mt-6 inline-block rounded-lg bg-amber-400 px-8 py-3 font-bold text-slate-900 hover:bg-amber-300"
+    >
+      Call Now
+    </a>
+  </section>
+</Layout>

@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const phone = '+971556710085';
+const whatsapp = '971556710085';
+
+const areas = [
+  { name: 'Dubai Marina', text: 'Apartments and towers around the Marina and the Walk.' },
+  { name: 'JLT (Jumeirah Lake Towers)', text: 'Home and office repairs across all JLT clusters.' },
+  { name: 'Downtown Dubai', text: 'Service near Burj Khalifa, Dubai Mall and Old Town.' },
+  { name: 'Business Bay', text: 'Fast help for apartments and offices in Business Bay.' },
+  { name: 'Jumeirah', text: 'Villas and homes in Jumeirah 1, 2 and 3.' },
+  { name: 'Deira', text: 'Repairs for flats and shops across Deira.' },
+  { name: 'Bur Dubai', text: 'Plumbing, electrical and handyman work in Bur Dubai.' },
+  { name: 'Al Barsha', text: 'Villas and apartments in Al Barsha 1, 2 and 3.' },
+  { name: 'JVC (Jumeirah Village Circle)', text: 'Reliable service for JVC apartments and townhouses.' },
+  { name: 'Dubai Hills', text: 'Villa and apartment repairs in Dubai Hills Estate.' },
+  { name: 'Al Quoz', text: 'Home and workshop repairs in Al Quoz.' },
+  { name: 'Mirdif', text: 'Villa and apartment service across Mirdif.' },
+  { name: 'Discovery Gardens', text: 'Quick repairs for Discovery Gardens apartments.' },
+  { name: 'Arabian Ranches', text: 'Villa maintenance in Arabian Ranches.' },
+  { name: 'Jumeirah Beach Residence (JBR)', text: 'Apartment repairs in JBR towers.' },
+  { name: 'Al Nahda', text: 'Home repair service in Al Nahda, Dubai.' },
+];
+
+const faqs = [
+  {
+    q: 'Which areas of Dubai do you cover?',
+    a: 'We cover all major areas of Dubai, including the ones listed on this page. If your area is not listed, call us and ask.',
+  },
+  {
+    q: 'Do you charge extra for travel?',
+    a: 'We tell you the full price in your free quote before we start, so there are no surprises.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Areas We Serve in Dubai | Plumber, Electrician & Handyman | SM Home Repair"
+  description="SM Home Repair serves Dubai Marina, JLT, Downtown, Business Bay, Jumeirah, Deira, JVC and more. Call or WhatsApp for same-day service."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-20 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h1 class="text-4xl font-extrabold md:text-5xl">
+        Areas We Serve in <span class="text-amber-400">Dubai</span>
+      </h1>
+      <p class="mt-4 text-lg text-slate-300">
+        Plumber, electrician and handyman services across the city.
+      </p>
+    </div>
+  </section>
+
+  <!-- Areas grid -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {areas.map((a) => (
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 class="text-lg font-bold text-slate-900">Plumber, Electrician & Handyman in {a.name}</h2>
+          <p class="mt-2 text-sm text-slate-600">{a.text}</p>
+          <div class="mt-4 flex gap-3 text-sm font-semibold">
+            <a href={`tel:${phone}`} class="text-amber-600 hover:underline">Call</a>
+            <a
+              href={`https://wa.me/${whatsapp}?text=Hello%2C%20I%20need%20a%20service%20in%20${encodeURIComponent(a.name)}`}
+              target="_blank"
+              rel="noopener"
+              class="text-green-600 hover:underline"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-4 pb-16">
+    <h2 class="text-center text-3xl font-extrabold">Area FAQ</h2>
+    <div class="mt-8 space-y-4">
+      {faqs.map((f) => (
+        <details class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <summary class="cursor-pointer font-semibold">{f.q}</summary>
+          <p class="mt-2 text-slate-600">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-900 py-14 text-center text-white">
+    <h2 class="text-3xl font-extrabold">Not Sure We Cover Your Area?</h2>
+    <p class="mt-2 text-slate-300">Call or WhatsApp us and we will confirm quickly.</p>
+    <a
+      href={`tel:${phone}`}
+      class="mt-6 inline-block rounded-lg bg-amber-400 px-8 py-3 font-bold text-slate-900 hover:bg-amber-300"
+    >
+      Call Now
+    </a>
+  </section>
+</Layout>

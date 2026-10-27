@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const phone = '+971556710085';
+const whatsapp = '971556710085';
+
+const services = [
+  { title: 'Leak Repair', text: 'Fix leaking pipes, taps, showers and hidden water leaks.' },
+  { title: 'Blocked Drains', text: 'Clear blocked sinks, toilets, floor drains and sewer lines.' },
+  { title: 'Water Heater Repair', text: 'Repair and replace geysers and water heaters.' },
+  { title: 'Tap & Mixer Installation', text: 'Install or replace kitchen and bathroom taps and mixers.' },
+  { title: 'Toilet Repair', text: 'Flush tank repair, toilet seat and full toilet replacement.' },
+  { title: 'Pipe Fitting', text: 'New pipe fitting, replacement and bathroom plumbing work.' },
+  { title: 'Water Tank & Pump', text: 'Water pump repair, tank connection and pressure problems.' },
+  { title: 'Emergency Plumber', text: 'Urgent plumbing help when you cannot wait.' },
+];
+
+const faqs = [
+  {
+    q: 'Do you provide emergency plumbing in Dubai?',
+    a: 'Yes. Call or WhatsApp us and we will send a plumber as soon as possible.',
+  },
+  {
+    q: 'How much does a plumber cost in Dubai?',
+    a: 'The price depends on the job. We give you a free quote before we start work.',
+  },
+  {
+    q: 'Can you fix hidden water leaks?',
+    a: 'Yes. Our plumbers find the source of the leak and repair it properly.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Plumber in Dubai | Leak Repair & Drain Cleaning | SM Home Repair"
+  description="Professional plumber in Dubai. Leak repair, blocked drains, water heaters, taps and toilets. Same-day service and free quote."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-20 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h1 class="text-4xl font-extrabold md:text-5xl">
+        Plumber in <span class="text-amber-400">Dubai</span>
+      </h1>
+      <p class="mt-4 text-lg text-slate-300">
+        Leaks, blocked drains, water heaters and more. Fixed fast, with a free quote.
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href={`tel:${phone}`}
+          class="rounded-lg bg-amber-400 px-7 py-3 font-bold text-slate-900 hover:bg-amber-300"
+        >
+          Call Now
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp}?text=Hello%2C%20I%20need%20a%20plumber`}
+          target="_blank"
+          rel="noopener"
+          class="rounded-lg bg-green-500 px-7 py-3 font-bold text-white hover:bg-green-600"
+        >
+          WhatsApp a Plumber
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-center text-3xl font-extrabold">Our Plumbing Services</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {services.map((s) => (
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-slate-900">{s.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="text-center text-3xl font-extrabold">Why Call SM Home Repair for Plumbing</h2>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+        <li class="rounded-2xl bg-slate-50 p-5">Same-day service across Dubai</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Experienced, professional plumbers</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Free quote before work starts</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Guaranteed repairs</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <h2 class="text-center text-3xl font-extrabold">Plumbing FAQ</h2>
+    <div class="mt-8 space-y-4">
+      {faqs.map((f) => (
+        <details class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <summary class="cursor-pointer font-semibold">{f.q}</summary>
+          <p class="mt-2 text-slate-600">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-900 py-14 text-center text-white">
+    <h2 class="text-3xl font-extrabold">Plumbing Problem? We Can Help Today.</h2>
+    <p class="mt-2 text-slate-300">Call or WhatsApp us for a free quote.</p>
+    <a
+      href={`tel:${phone}`}
+      class="mt-6 inline-block rounded-lg bg-amber-400 px-8 py-3 font-bold text-slate-900 hover:bg-amber-300"
+    >
+      Call Now
+    </a>
+  </section>
+</Layout>

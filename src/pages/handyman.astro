@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const phone = '+971556710085';
+const whatsapp = '971556710085';
+
+const services = [
+  { title: 'Furniture Assembly', text: 'Beds, wardrobes, desks, shelves and IKEA furniture assembly.' },
+  { title: 'TV Mounting', text: 'Wall mounting for TVs of all sizes, with neat cable hiding.' },
+  { title: 'Door & Lock Repair', text: 'Fix doors, handles, hinges and replace or repair locks.' },
+  { title: 'Painting & Touch-ups', text: 'Interior painting, wall repair and small touch-up jobs.' },
+  { title: 'Curtain & Blind Fitting', text: 'Install curtain rods, tracks and window blinds.' },
+  { title: 'Shelves & Wall Hanging', text: 'Mount shelves, mirrors, frames and wall decorations.' },
+  { title: 'Carpentry Repairs', text: 'Cabinet repair, wood fixing and small carpentry work.' },
+  { title: 'Tiles & Silicone', text: 'Fix loose tiles, grout and re-seal bathrooms and kitchens.' },
+];
+
+const faqs = [
+  {
+    q: 'What handyman services do you offer in Dubai?',
+    a: 'We do furniture assembly, TV mounting, door and lock repair, painting, carpentry and many small home repairs.',
+  },
+  {
+    q: 'Can you do small jobs?',
+    a: 'Yes. No job is too small. We can also combine several small jobs in one visit.',
+  },
+  {
+    q: 'Do you give a price before the work?',
+    a: 'Yes. We give you a free quote before we start any work.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Handyman in Dubai | Home Repairs & Furniture Assembly | SM Home Repair"
+  description="Reliable handyman in Dubai. Furniture assembly, TV mounting, door repair, painting and more. Same-day service and free quote."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-20 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h1 class="text-4xl font-extrabold md:text-5xl">
+        Handyman in <span class="text-amber-400">Dubai</span>
+      </h1>
+      <p class="mt-4 text-lg text-slate-300">
+        One call for all your home repairs. Fast service and a free quote.
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href={`tel:${phone}`}
+          class="rounded-lg bg-amber-400 px-7 py-3 font-bold text-slate-900 hover:bg-amber-300"
+        >
+          Call Now
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp}?text=Hello%2C%20I%20need%20a%20handyman`}
+          target="_blank"
+          rel="noopener"
+          class="rounded-lg bg-green-500 px-7 py-3 font-bold text-white hover:bg-green-600"
+        >
+          WhatsApp a Handyman
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-center text-3xl font-extrabold">Our Handyman Services</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {services.map((s) => (
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-slate-900">{s.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="text-center text-3xl font-extrabold">Why Call SM Home Repair as Your Handyman</h2>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+        <li class="rounded-2xl bg-slate-50 p-5">Same-day service across Dubai</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Skilled, tidy and respectful technicians</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Free quote before work starts</li>
+        <li class="rounded-2xl bg-slate-50 p-5">Plumbing and electrical help in the same visit</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <h2 class="text-center text-3xl font-extrabold">Handyman FAQ</h2>
+    <div class="mt-8 space-y-4">
+      {faqs.map((f) => (
+        <details class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <summary class="cursor-pointer font-semibold">{f.q}</summary>
+          <p class="mt-2 text-slate-600">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-900 py-14 text-center text-white">
+    <h2 class="text-3xl font-extrabold">Need a Handyman Today?</h2>
+    <p class="mt-2 text-slate-300">Call or WhatsApp us for a free quote.</p>
+    <a
+      href={`tel:${phone}`}
+      class="mt-6 inline-block rounded-lg bg-amber-400 px-8 py-3 font-bold text-slate-900 hover:bg-amber-300"
+    >
+      Call Now
+    </a>
+  </section>
+</Layout>
