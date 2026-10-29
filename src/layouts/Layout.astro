@@ -29,11 +29,18 @@ const schema = {
   description,
 };
 
-const nav = [
+const services = [
+  { href: '/fridge-repair-dubai', label: 'Fridge Repair' },
+  { href: '/washing-machine-repair-dubai', label: 'Washing Machine Repair' },
+  { href: '/cooking-range-repair-dubai', label: 'Cooking Range Repair' },
+  { href: '/washer-dryer-repair-dubai', label: 'Washer Dryer Repair' },
+  { href: '/electrical', label: 'Electrical Services' },
+  { href: '/handyman', label: 'Handyman Services' },
+];
+
+const mobileNav = [
   { href: '/', label: 'Home' },
-  { href: '/plumbing', label: 'Plumbing' },
-  { href: '/electrical', label: 'Electrical' },
-  { href: '/handyman', label: 'Handyman' },
+  ...services,
   { href: '/areas', label: 'Areas' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -55,7 +62,7 @@ const nav = [
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="SM Home Repair - Plumber, Electrician and Handyman in Dubai" />
+    <meta property="og:image:alt" content="SM Home Repair - Fridge, Washing Machine, Cooking Range, Washer Dryer, Electrical and Handyman in Dubai" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -66,10 +73,20 @@ const nav = [
         <a href="/" class="text-xl font-extrabold text-slate-900">
           SM <span class="text-amber-500">Home Repair</span>
         </a>
-        <nav class="hidden gap-6 md:flex">
-          {nav.map((item) => (
-            <a href={item.href} class="font-medium text-slate-600 hover:text-amber-600">{item.label}</a>
-          ))}
+        <nav class="hidden items-center gap-6 md:flex">
+          <a href="/" class="font-medium text-slate-600 hover:text-amber-600">Home</a>
+          <div class="group relative">
+            <button type="button" class="font-medium text-slate-600 hover:text-amber-600">Services ▾</button>
+            <div class="absolute left-0 top-full hidden pt-2 group-hover:block">
+              <div class="w-64 rounded-xl border border-slate-200 bg-white py-2 shadow-lg">
+                {services.map((s) => (
+                  <a href={s.href} class="block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-700">{s.label}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <a href="/areas" class="font-medium text-slate-600 hover:text-amber-600">Areas</a>
+          <a href="/contact" class="font-medium text-slate-600 hover:text-amber-600">Contact</a>
         </nav>
         <a
           href={`tel:${phone}`}
@@ -79,7 +96,7 @@ const nav = [
         </a>
       </div>
       <nav class="flex gap-4 overflow-x-auto border-t border-slate-100 px-4 py-2 md:hidden">
-        {nav.map((item) => (
+        {mobileNav.map((item) => (
           <a href={item.href} class="whitespace-nowrap text-sm font-medium text-slate-600">{item.label}</a>
         ))}
       </nav>
@@ -93,14 +110,15 @@ const nav = [
           <h3 class="text-lg font-bold text-white">
             SM <span class="text-amber-400">Home Repair</span>
           </h3>
-          <p class="mt-2 text-sm">Trusted plumbing, electrical and handyman services across Dubai.</p>
+          <p class="mt-2 text-sm">Fridge, washing machine, cooking range, washer dryer, electrical and handyman services across Dubai.</p>
         </div>
         <div>
           <h3 class="font-bold text-white">Services</h3>
           <ul class="mt-2 space-y-1 text-sm">
-            <li><a href="/plumbing" class="hover:text-amber-400">Plumbing</a></li>
-            <li><a href="/electrical" class="hover:text-amber-400">Electrical</a></li>
-            <li><a href="/handyman" class="hover:text-amber-400">Handyman</a></li>
+            {services.map((s) => (
+              <li><a href={s.href} class="hover:text-amber-400">{s.label}</a></li>
+            ))}
+            <li><a href="/areas" class="hover:text-amber-400">Areas We Serve</a></li>
           </ul>
         </div>
         <div>

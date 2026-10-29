@@ -1,0 +1,52 @@
+---
+import ServicePage from '../components/ServicePage.astro';
+
+const faqs = [
+  {
+    q: 'Do you provide same-day fridge repair in Dubai?',
+    a: 'Yes. Call or WhatsApp us and we will send a technician as soon as possible.',
+  },
+  {
+    q: 'Why is my fridge not cooling?',
+    a: 'Common causes are a faulty compressor, a gas leak, a broken fan or a thermostat problem. Our technician checks and finds the exact fault.',
+  },
+  {
+    q: 'Do you repair freezers and double-door fridges?',
+    a: 'Yes. We repair single-door, double-door and side-by-side fridges, and freezers.',
+  },
+  {
+    q: 'How much does fridge repair cost in Dubai?',
+    a: 'The price depends on the fault. We give you a free quote before we start work.',
+  },
+];
+
+const related = [
+  { href: '/washing-machine-repair-dubai', label: 'Washing Machine Repair' },
+  { href: '/cooking-range-repair-dubai', label: 'Cooking Range Repair' },
+  { href: '/washer-dryer-repair-dubai', label: 'Washer Dryer Repair' },
+  { href: '/electrical', label: 'Electrical Services' },
+];
+---
+
+<ServicePage
+  title="Fridge Repair Dubai | Same-Day Refrigerator Repair | SM Home Repair"
+  description="Fridge repair in Dubai: not cooling, water leaking, ice build-up, gas refill and more. Same-day service and free quote. Call or WhatsApp today."
+  h1="Fridge Repair in Dubai"
+  intro="Fridge not cooling or leaking? We repair all types of fridges and freezers at your home, with same-day service and a free quote."
+  problems={[
+    'Fridge not cooling',
+    'Freezer not freezing',
+    'Water leaking from the fridge',
+    'Ice build-up in the freezer',
+    'Strange or loud noise',
+    'Fridge gas refill',
+    'Compressor problems',
+    'Door seal and handle repair',
+    'Fridge turning on and off',
+  ]}
+  brands={['Samsung', 'LG', 'Bosch', 'Siemens', 'Hitachi', 'Whirlpool', 'Haier', 'Electrolux', 'Panasonic', 'Sharp']}
+  faqs={faqs}
+  waText="Hello, I need fridge repair"
+  ctaTitle="Fridge Not Working? We Can Help Today."
+  related={related}
+/>

@@ -6,14 +6,29 @@ const whatsapp = '971556710085';
 
 const services = [
   {
-    title: 'Plumbing Services',
-    href: '/plumbing',
-    text: 'Leak repair, blocked drains, water heaters, taps, toilets and pipe fitting.',
+    title: 'Fridge Repair',
+    href: '/fridge-repair-dubai',
+    text: 'Not cooling, leaking, ice build-up and gas refill for all fridge brands.',
+  },
+  {
+    title: 'Washing Machine Repair',
+    href: '/washing-machine-repair-dubai',
+    text: 'Not draining, not spinning, leaking and error codes fixed fast.',
+  },
+  {
+    title: 'Cooking Range Repair',
+    href: '/cooking-range-repair-dubai',
+    text: 'Gas and electric cooking ranges, burners, ovens and ignition faults.',
+  },
+  {
+    title: 'Washer Dryer Repair',
+    href: '/washer-dryer-repair-dubai',
+    text: 'Washer dryers and dryers that do not dry, heat or drain.',
   },
   {
     title: 'Electrical Services',
     href: '/electrical',
-    text: 'Wiring, sockets, switches, lighting, DB panels and electrical fault finding.',
+    text: 'Wiring, sockets, switches, lighting, DB panels and fault finding.',
   },
   {
     title: 'Handyman Services',
@@ -24,7 +39,7 @@ const services = [
 
 const reasons = [
   { title: 'Same-Day Service', text: 'Fast response across Dubai, including urgent calls.' },
-  { title: 'Skilled Technicians', text: 'Experienced and professional plumbers and electricians.' },
+  { title: 'Skilled Technicians', text: 'Experienced and professional technicians for every job.' },
   { title: 'Clear Pricing', text: 'Free quote before we start. No hidden charges.' },
   { title: 'Work Guarantee', text: 'We stand behind every repair we do.' },
 ];
@@ -46,7 +61,11 @@ const faqs = [
     a: 'Yes. Call or WhatsApp us and we will send a technician as soon as possible.',
   },
   {
-    q: 'How much does a plumber or electrician cost in Dubai?',
+    q: 'What do you repair?',
+    a: 'We repair fridges, washing machines, cooking ranges and washer dryers. We also offer electrical and handyman services.',
+  },
+  {
+    q: 'How much does repair cost in Dubai?',
     a: 'It depends on the job. We give you a free quote before starting any work.',
   },
   {
@@ -67,8 +86,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="Plumber, Electrician & Handyman in Dubai | SM Home Repair"
-  description="Trusted plumbing, electrical and handyman services in Dubai. Same-day service, free quote. Call or WhatsApp SM Home Repair today."
+  title="Fridge, Washing Machine, Dryer & Cooking Range Repair Dubai | SM Home Repair"
+  description="Fridge repair, washing machine repair, washer dryer repair and cooking range repair in Dubai, plus electrical and handyman services. Same-day service, free quote."
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -78,11 +97,11 @@ const faqSchema = {
       <p class="mb-4 inline-block rounded-full border border-amber-400/40 px-4 py-1 text-sm font-medium text-amber-300">
         Serving all of Dubai
       </p>
-      <h1 class="text-4xl font-extrabold md:text-6xl">
-        Plumber, Electrician & <span class="text-amber-400">Handyman</span> in Dubai
+      <h1 class="text-4xl font-extrabold md:text-5xl">
+        Fridge, Washing Machine, Dryer & Cooking Range Repair in <span class="text-amber-400">Dubai</span>
       </h1>
       <p class="mt-5 text-lg text-slate-300">
-        Fast, reliable home repair. Same-day service and free quotes.
+        Fast, reliable repair at your home. Same-day service and free quotes. Electrical and handyman work too.
       </p>
       <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
         <a
@@ -106,7 +125,7 @@ const faqSchema = {
   <!-- Services -->
   <section class="mx-auto max-w-6xl px-4 py-16">
     <h2 class="text-center text-3xl font-extrabold">Our Services</h2>
-    <div class="mt-10 grid gap-6 md:grid-cols-3">
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {services.map((s) => (
         <a
           href={s.href}

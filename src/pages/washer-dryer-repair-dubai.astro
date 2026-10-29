@@ -1,0 +1,52 @@
+---
+import ServicePage from '../components/ServicePage.astro';
+
+const faqs = [
+  {
+    q: 'Do you provide same-day washer dryer repair in Dubai?',
+    a: 'Yes. Call or WhatsApp us and we will send a technician as soon as possible.',
+  },
+  {
+    q: 'Why is my washer dryer not drying clothes?',
+    a: 'Common causes are a faulty heating element, a blocked vent or a broken sensor. Our technician checks and fixes the exact fault.',
+  },
+  {
+    q: 'Do you repair dryers as well as washer dryers?',
+    a: 'Yes. We repair washer dryers and separate tumble dryers, vented and condenser.',
+  },
+  {
+    q: 'How much does washer dryer repair cost in Dubai?',
+    a: 'The price depends on the fault. We give you a free quote before we start work.',
+  },
+];
+
+const related = [
+  { href: '/fridge-repair-dubai', label: 'Fridge Repair' },
+  { href: '/washing-machine-repair-dubai', label: 'Washing Machine Repair' },
+  { href: '/cooking-range-repair-dubai', label: 'Cooking Range Repair' },
+  { href: '/electrical', label: 'Electrical Services' },
+];
+---
+
+<ServicePage
+  title="Washer Dryer Repair Dubai | Dryer Not Drying Fix | SM Home Repair"
+  description="Washer dryer and dryer repair in Dubai: not drying, not heating, not draining, error codes and more. Same-day service and free quote. Call or WhatsApp."
+  h1="Washer Dryer & Dryer Repair in Dubai"
+  intro="Washer dryer or dryer not working? We repair them at your home, with same-day service and a free quote."
+  problems={[
+    'Dryer not drying clothes',
+    'Not heating',
+    'Washer dryer not draining',
+    'Not spinning or not rotating',
+    'Water leaking',
+    'Error codes on the display',
+    'Loud noise or vibration',
+    'Clothes smell or stay damp',
+    'Heating element replacement',
+  ]}
+  brands={['Samsung', 'LG', 'Bosch', 'Siemens', 'Whirlpool', 'Hitachi', 'Haier', 'Electrolux', 'Beko', 'Ariston']}
+  faqs={faqs}
+  waText="Hello, I need washer dryer repair"
+  ctaTitle="Washer Dryer Not Working? We Can Help Today."
+  related={related}
+/>
