@@ -11,7 +11,7 @@ const areas = [
   { name: 'Business Bay', text: 'Fast help for apartments and offices in Business Bay.' },
   { name: 'Jumeirah', text: 'Villas and homes in Jumeirah 1, 2 and 3.' },
   { name: 'Deira', text: 'Repairs for flats and shops across Deira.' },
-  { name: 'Bur Dubai', text: 'Plumbing, electrical and handyman work in Bur Dubai.' },
+  { name: 'Bur Dubai', text: 'Repair, electrical and handyman work in Bur Dubai.' },
   { name: 'Al Barsha', text: 'Villas and apartments in Al Barsha 1, 2 and 3.' },
   { name: 'JVC (Jumeirah Village Circle)', text: 'Reliable service for JVC apartments and townhouses.' },
   { name: 'Dubai Hills', text: 'Villa and apartment repairs in Dubai Hills Estate.' },
@@ -46,7 +46,7 @@ const faqSchema = {
 ---
 
 <Layout
-  title="Areas We Serve in Dubai | Plumber, Electrician & Handyman | SM Home Repair"
+  title="Areas We Serve in Dubai | Fridge, Washing Machine & Electrical Repair | SM Home Repair"
   description="SM Home Repair serves Dubai Marina, JLT, Downtown, Business Bay, Jumeirah, Deira, JVC and more. Call or WhatsApp for same-day service."
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -58,7 +58,7 @@ const faqSchema = {
         Areas We Serve in <span class="text-amber-400">Dubai</span>
       </h1>
       <p class="mt-4 text-lg text-slate-300">
-        Plumber, electrician and handyman services across the city.
+        Fridge, washing machine, cooking range, washer dryer, electrical and handyman services across the city.
       </p>
     </div>
   </section>
@@ -68,7 +68,7 @@ const faqSchema = {
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {areas.map((a) => (
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 class="text-lg font-bold text-slate-900">Plumber, Electrician & Handyman in {a.name}</h2>
+          <h2 class="text-lg font-bold text-slate-900">Fridge, Washing Machine & Electrical Repair in {a.name}</h2>
           <p class="mt-2 text-sm text-slate-600">{a.text}</p>
           <div class="mt-4 flex gap-3 text-sm font-semibold">
             <a href={`tel:${phone}`} class="text-amber-600 hover:underline">Call</a>

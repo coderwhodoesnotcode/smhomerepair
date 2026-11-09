@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const phone = '+971556710085';
+const whatsapp = '971556710085';
+const date = post.data.pubDate.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <main class="mx-auto max-w-3xl px-4 py-10">
+    <a href="/blog" class="text-sm font-medium text-amber-600 hover:text-amber-700">← All Articles</a>
+
+    <h1 class="mt-4 text-3xl font-extrabold leading-tight text-slate-900 md:text-4xl">
+      {post.data.title}
+    </h1>
+    <p class="mt-2 text-sm text-slate-500">{post.data.author} · {date}</p>
+
+    <article class="blog-content mt-8">
+      <Content />
+    </article>
+
+    <div class="mt-12 rounded-2xl bg-slate-900 p-6 text-center">
+      <h2 class="text-xl font-bold text-white">Need a repair today?</h2>
+      <p class="mt-1 text-slate-300">Call or WhatsApp SM Home Repair for fast service.</p>
+      <div class="mt-4 flex flex-wrap justify-center gap-3">
+        <a href={`tel:${phone}`} class="rounded-lg bg-amber-400 px-5 py-2 font-bold text-slate-900 hover:bg-amber-300">Call Now</a>
+        <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener" class="rounded-lg bg-green-500 px-5 py-2 font-bold text-white hover:bg-green-600">WhatsApp</a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .blog-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .blog-content p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: #334155;
+  }
+  .blog-content ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+    color: #334155;
+  }
+  .blog-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    list-style: decimal;
+    color: #334155;
+  }
+  .blog-content li {
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+  }
+  .blog-content strong {
+    color: #0f172a;
+  }
+</style>
