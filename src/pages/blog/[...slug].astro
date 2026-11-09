@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -14,14 +15,51 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const phone = '+971556710085';
 const whatsapp = '971556710085';
+const site = 'https://smhomerepair.com';
+const url = `${site}/blog/${post.id}`;
+
 const date = post.data.pubDate.toLocaleDateString('en-GB', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
 });
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.pubDate.toISOString(),
+  image: `${site}/og-image.jpg`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  author: { '@type': 'Organization', name: post.data.author, url: site },
+  publisher: {
+    '@type': 'Organization',
+    name: 'SM Home Repair',
+    url: site,
+  },
+};
+const faqSchema = post.data.faqs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.data.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
+  <Breadcrumbs
+    items={[
+      { label: 'Blog', href: '/blog' },
+      { label: post.data.title },
+    ]}
+  />
   <main class="mx-auto max-w-3xl px-4 py-10">
     <a href="/blog" class="text-sm font-medium text-amber-600 hover:text-amber-700">← All Articles</a>
 
@@ -43,6 +81,9 @@ const date = post.data.pubDate.toLocaleDateString('en-GB', {
       </div>
     </div>
   </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 </Layout>
 
 <style is:global>

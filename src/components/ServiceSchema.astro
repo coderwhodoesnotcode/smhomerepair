@@ -1,0 +1,30 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  serviceType: string;
+  areaServed?: string[];
+}
+
+const { name, description, serviceType, areaServed = ['Dubai'] } = Astro.props;
+const site = 'https://smhomerepair.com';
+const phone = '+971556710085';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name,
+  description,
+  serviceType,
+  url: new URL(Astro.url.pathname, site).href,
+  provider: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: 'SM Home Repair',
+    url: site,
+    telephone: phone,
+  },
+  areaServed: areaServed.map((a) => ({ '@type': 'City', name: a })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
