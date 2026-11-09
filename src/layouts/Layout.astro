@@ -42,6 +42,7 @@ const mobileNav = [
   { href: '/', label: 'Home' },
   ...services,
   { href: '/areas', label: 'Areas' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -86,6 +87,7 @@ const mobileNav = [
             </div>
           </div>
           <a href="/areas" class="font-medium text-slate-600 hover:text-amber-600">Areas</a>
+          <a href="/blog" class="font-medium text-slate-600 hover:text-amber-600">Blog</a>
           <a href="/contact" class="font-medium text-slate-600 hover:text-amber-600">Contact</a>
         </nav>
         <a
@@ -119,6 +121,7 @@ const mobileNav = [
               <li><a href={s.href} class="hover:text-amber-400">{s.label}</a></li>
             ))}
             <li><a href="/areas" class="hover:text-amber-400">Areas We Serve</a></li>
+            <li><a href="/blog" class="hover:text-amber-400">Blog</a></li>
           </ul>
         </div>
         <div>
