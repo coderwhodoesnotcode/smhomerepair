@@ -22,6 +22,12 @@ const schema = {
     name: 'SM Home Repair',
     url: site,
     telephone: phone,
+    image: `${site}/og-image.jpg`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Dubai',
+      addressCountry: 'AE',
+    },
   },
   areaServed: areaServed.map((a) => ({ '@type': 'City', name: a })),
 };
