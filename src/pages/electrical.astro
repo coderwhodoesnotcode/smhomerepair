@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ServiceSchema from '../components/ServiceSchema.astro';
 
 const phone = '+971556710085';
 const whatsapp = '971556710085';
@@ -45,6 +47,12 @@ const faqSchema = {
   title="Electrician in Dubai | Wiring, Lighting & Repairs | SM Home Repair"
   description="Professional electrician in Dubai. Fault finding, sockets, lighting, DB panels and wiring. Same-day service and free quote."
 >
+  <Breadcrumbs items={[{ label: 'Electrical Services' }]} />
+  <ServiceSchema
+    name="Electrician in Dubai"
+    description="Professional electrician in Dubai. Fault finding, sockets, lighting, DB panels and wiring. Same-day service and free quote."
+    serviceType="Electrical Services"
+  />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->

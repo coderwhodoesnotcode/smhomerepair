@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const phone = '+971556710085';
 const whatsapp = '971556710085';
@@ -49,6 +50,7 @@ const faqSchema = {
   title="Areas We Serve in Dubai | Fridge, Washing Machine & Electrical Repair | SM Home Repair"
   description="SM Home Repair serves Dubai Marina, JLT, Downtown, Business Bay, Jumeirah, Deira, JVC and more. Call or WhatsApp for same-day service."
 >
+  <Breadcrumbs items={[{ label: 'Areas We Serve' }]} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->

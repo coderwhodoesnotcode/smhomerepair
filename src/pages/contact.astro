@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const phone = '+971556710085';
 const whatsapp = '971556710085';
@@ -9,6 +10,8 @@ const whatsapp = '971556710085';
   title="Contact SM Home Repair | Call or WhatsApp in Dubai"
   description="Contact SM Home Repair in Dubai for fridge, washing machine, cooking range, washer dryer, electrical and handyman services. Call or WhatsApp for a free quote."
 >
+  <Breadcrumbs items={[{ label: 'Contact' }]} />
+
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 py-20 text-white">
     <div class="mx-auto max-w-4xl px-4 text-center">

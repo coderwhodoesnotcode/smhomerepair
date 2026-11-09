@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ServiceSchema from '../components/ServiceSchema.astro';
 
 const phone = '+971556710085';
 const whatsapp = '971556710085';
@@ -45,6 +47,12 @@ const faqSchema = {
   title="Handyman in Dubai | Home Repairs & Furniture Assembly | SM Home Repair"
   description="Reliable handyman in Dubai. Furniture assembly, TV mounting, door repair, painting and more. Same-day service and free quote."
 >
+  <Breadcrumbs items={[{ label: 'Handyman Services' }]} />
+  <ServiceSchema
+    name="Handyman Services in Dubai"
+    description="Handyman services in Dubai: furniture assembly, TV mounting, door and lock repair, painting and carpentry. Same-day service and free quote."
+    serviceType="Handyman Services"
+  />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
